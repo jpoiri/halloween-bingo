@@ -39,9 +39,10 @@ randomValues.forEach((value) => {
     })
 })
 
-function onCellClick(cell) {
+
+const onCellClick = cell => {
     cell.selected = !cell.selected;
-    if (isBingo(this.cells)) {
+    if (isBingo(cells.value)) {
         emit('onBingo');
     }
 }
