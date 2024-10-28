@@ -14,9 +14,8 @@ import { RouterLink, RouterView } from 'vue-router'
 }
 
 *, html {
-   font-family: "halloween";
-   background-color: darkorange
-
+   	font-family: "halloween";
+	background: darkorange;
 }
 
 </style>

@@ -17,28 +17,17 @@ const props = defineProps({
 
 const emit = defineEmits(['onBingo', 'onCellClick']);
 
-const shuffle = (array) => { 
-  for (let i = array.length - 1; i > 0; i--) { 
-    const j = Math.floor(Math.random() * (i + 1)); 
-    [array[i], array[j]] = [array[j], array[i]]; 
-  } 
-  return array; 
-}; 
-
-let randomValues = shuffle(props.values);
-
-randomValues = [...randomValues.slice(0, 12), "free", ...randomValues.slice(12)];
+const values = [...props.values.slice(0, 12), "free", ...props.values.slice(12)];
 
 const cells = ref([]);
 
-randomValues.forEach((value) => {
+values.forEach((value) => {
     cells.value.push({
         value,
         selected: value === 'free' ? true : false,
         free: value === 'free' ? true : false
     })
 })
-
 
 const onCellClick = cell => {
     cell.selected = !cell.selected;
@@ -123,12 +112,13 @@ function isBingo(cells) {
 }
 .container {
     display: grid;
-    grid-template-columns: repeat(5, 150px);
-    grid-template-rows: repeat(5, 150px);
+    grid-template-columns: repeat(5, 140px);
+    grid-template-rows: repeat(5, 140px);
     gap: 10px;
     margin: 0;
     padding: 0;
     justify-content: center;
+    overflow: auto;
 }
 
 .item {
@@ -139,7 +129,7 @@ function isBingo(cells) {
     border: 4px solid white;
     border-radius: 4px;
     align-content: center;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     padding: 10px;
     transition: ease-in 200ms;
 }
@@ -151,5 +141,16 @@ function isBingo(cells) {
 }
 .item-selected {
     color: darkorange;
+}
+
+/* tablet */
+@media (max-width: 1050px) {
+   .container {
+        grid-template-columns: repeat(5, 100px);
+        grid-template-rows: repeat(5, 100px);
+   }
+   .item {
+       font-size: 1rem;
+   }
 }
 </style>
