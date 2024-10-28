@@ -4,7 +4,7 @@ import BingoCallout from '../views/BingoCallout.vue';
 import GameOver from '../views/GameOver.vue';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory('/halloween-bingo/'),
   routes: [
     {
       path: '/',
