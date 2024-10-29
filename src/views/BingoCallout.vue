@@ -1,8 +1,15 @@
 <script setup>
 import { ref } from 'vue';
 import { usePhraseStore } from "@/stores/phrase";
+import { useRoute } from 'vue-router';
 
 const store = usePhraseStore();
+const route = useRoute();
+
+if (route.query.alternatePhrases) {
+    store.useAlternate(true);  
+}
+
 const phrases = [...store.randomPhrases];
 
 let phrase = ref();

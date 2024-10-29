@@ -78,7 +78,7 @@ function isCross(cells) {
 
 function isBingo(cells) {
     switch(props.gameMode) {
-        case 'full-card':
+        case 'fullcard':
             return isFullCard(cells);
         case 'cross':
             return isCross(cells);

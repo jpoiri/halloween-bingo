@@ -1,13 +1,25 @@
 <script setup>
 import BingoCard from '../components/BingoCard.vue';
-import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import { usePhraseStore } from '@/stores/phrase';
 
 const store = usePhraseStore();
 const router = useRouter();
+const route = useRoute();
+
+const gameMode = ref('line');
+
+if (route.query.gameMode) {
+    gameMode.value = route.query.gameMode;
+}
+
+if (route.query.alternatePhrases === 'true') {
+    store.useAlternate(true);  
+}
 
 function onGameOver() {
-  router.push('/gameover');
+    router.push('/gameover');
 }
 
 </script>
@@ -16,7 +28,7 @@ function onGameOver() {
   <main>
     <h1>Halloween bingo</h1>
 
-    <BingoCard :values="store.randomPhrases" @on-bingo="onGameOver()">
+    <BingoCard :values="store.randomPhrases" :game-mode="gameMode" @on-bingo="onGameOver()">
       <img alt="free space" src="../assets/freespace.png"/>
     </BingoCard>
   </main>
