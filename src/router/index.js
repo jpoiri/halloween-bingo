@@ -1,10 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import BingoGame from '../views/BingoGame.vue'
 import BingoCallout from '../views/BingoCallout.vue';
 import GameOver from '../views/GameOver.vue';
 
 const router = createRouter({
-  history: createWebHistory('/halloween-bingo/'),
+  history: createWebHashHistory('/halloween-bingo/'),
   routes: [
     {
       path: '/',
