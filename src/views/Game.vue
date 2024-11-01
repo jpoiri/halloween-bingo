@@ -28,7 +28,7 @@ function onBingo() {
     <h1>Halloween bingo</h1>
 
     <BingoCard :values="store.randomPhrases" :game-mode="gameMode" @on-bingo="onBingo()">
-      <img alt="free space" src="../assets/freespace.png"/>
+      <img alt="free space" src="../assets/pumpkin.png"/>
     </BingoCard>
   </main>
 </template>
@@ -41,6 +41,6 @@ function onBingo() {
   }
   img {
     background-color: black;
-    width: 100%;
+    width: 90%;
   }
 </style>

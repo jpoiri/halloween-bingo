@@ -36,7 +36,7 @@ It supports the following game modes:
 - <code>card</code> (Full card)
 - <code>corners</code> (Four corners)
 - <code>x</code> (X)
-- <code>edges<code> (Outside edges)
+- <code>edges</code> (Outside edges)
 
 ### Alternate phrases
 
@@ -65,3 +65,7 @@ npm install
 ```
 npm run dev
 ```
+
+## Copyright
+
+Pumpkin icon is from <a href="https://www.freepik.com/icons/halloween">Icon by Good Ware</a>
