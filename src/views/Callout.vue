@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { usePhraseStore } from "@/stores/phrase";
+import { usePhraseStore } from '@/stores/phrase';
 import { useRoute } from 'vue-router';
 
 const store = usePhraseStore();

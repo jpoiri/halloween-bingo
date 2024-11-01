@@ -32,11 +32,11 @@ You can change game modes using the <code>gameMode</code> query param (e.g. http
 
 It supports the following game modes:
 
-- line (Default)
-- card (Full card)
-- corners (Four corners)
-- x (X)
-- edges (Outside edges)
+- <code>line</code> (Default)
+- <code>card</code> (Full card)
+- <code>corners</code> (Four corners)
+- <code>x</code> (X)
+- <code>edges<code> (Outside edges)
 
 ### Alternate phrases
 

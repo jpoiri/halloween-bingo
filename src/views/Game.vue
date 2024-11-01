@@ -7,7 +7,6 @@ import { usePhraseStore } from '@/stores/phrase';
 const store = usePhraseStore();
 const router = useRouter();
 const route = useRoute();
-
 const gameMode = ref('line');
 
 if (route.query.gameMode) {

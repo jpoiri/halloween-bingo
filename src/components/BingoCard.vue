@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
 
 const props = defineProps({
     values: {
@@ -17,7 +17,7 @@ const props = defineProps({
 
 const emit = defineEmits(['onBingo', 'onCellClick']);
 
-const values = [...props.values.slice(0, 12), "free", ...props.values.slice(12)];
+const values = [...props.values.slice(0, 12), 'free', ...props.values.slice(12)];
 
 const cells = ref([]);
 
