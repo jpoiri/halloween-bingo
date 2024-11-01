@@ -10,7 +10,7 @@ const props = defineProps({
         type: String,
         default: 'line',
         validator(value, props) {
-            return ['line', 'fullcard', 'cross', ].includes(value)
+            return ['line', 'card', 'x', 'corners', 'edges'].includes(value)
         }  
     }
 });
@@ -40,55 +40,66 @@ function isCellSelected(cell) {
     return cell.selected;
 }
 
-function isLineSelected(cells, selectedCellIndexes = []) {
+function isCellsSelected(cells, selectedCellIndexes = []) {
     return cells.filter( (cell, index) => {
         return selectedCellIndexes.includes(index);
     }).every(isCellSelected);
 }
 
 function isHorizontalLine(cells) {
-    return isLineSelected(cells, [0, 1, 2, 3, 4]) 
-    || isLineSelected(cells, [5, 6, 7, 8, 9]) 
-    || isLineSelected(cells, [10, 11, 12, 13, 14])
-    || isLineSelected(cells, [15, 16, 17, 18, 19])
-    || isLineSelected(cells, [20, 21, 22, 23, 24]);
+    return isCellsSelected(cells, [0, 1, 2, 3, 4]) 
+    || isCellsSelected(cells, [5, 6, 7, 8, 9]) 
+    || isCellsSelected(cells, [10, 11, 12, 13, 14])
+    || isCellsSelected(cells, [15, 16, 17, 18, 19])
+    || isCellsSelected(cells, [20, 21, 22, 23, 24]);
 }
 
 function isVerticalLine(cells) {
-    return isLineSelected(cells, [0, 5, 10, 15, 20]) 
-    || isLineSelected(cells, [1, 6, 11, 16, 21]) 
-    || isLineSelected(cells, [2, 7, 12, 17, 22])
-    || isLineSelected(cells, [3, 8, 13, 18, 23])
-    || isLineSelected(cells, [4, 9, 14, 19, 24]);
+    return isCellsSelected(cells, [0, 5, 10, 15, 20]) 
+    || isCellsSelected(cells, [1, 6, 11, 16, 21]) 
+    || isCellsSelected(cells, [2, 7, 12, 17, 22])
+    || isCellsSelected(cells, [3, 8, 13, 18, 23])
+    || isCellsSelected(cells, [4, 9, 14, 19, 24]);
 }
 
 function isDiagonalLine(cells) {
-    return isLineSelected(cells, [0, 6, 18, 24]) 
-    || isLineSelected(cells, [4, 8, 16, 20]);
+    return isCellsSelected(cells, [0, 6, 18, 24]) 
+    || isCellsSelected(cells, [4, 8, 16, 20]);
 }
 
 function isFullCard(cells) {
     return cells.every(isCellSelected);
 }
 
-function isCross(cells) {
-    return isLineSelected(cells, [0, 6, 18, 24]) 
-    && isLineSelected(cells, [4, 8, 16, 20]);
+function isX(cells) {
+    return isCellsSelected(cells, [0, 6, 18, 24]) 
+    && isCellsSelected(cells, [4, 8, 16, 20]);
+}
+
+function isCorners(cells) {
+    return isCellsSelected(cells, [0, 4, 20, 24]);
+}
+
+function isEdges(cells) {
+    return isCellsSelected(cells, [0, 1, 2, 3, 4, 5, 9, 10, 13, 14, 15, 19, 24]);
 }
 
 function isBingo(cells) {
     switch(props.gameMode) {
-        case 'fullcard':
+        case 'card':
             return isFullCard(cells);
-        case 'cross':
-            return isCross(cells);
+        case 'x':
+            return isX(cells);
+        case 'corners':
+            return isCorners(cells);
+        case 'edges':
+            return isEdges(cells);
         default: 
             return isHorizontalLine(cells) || isVerticalLine(cells) || isDiagonalLine(cells);
     }
 }
 
 </script>
-
 
 <template>
 

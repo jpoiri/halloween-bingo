@@ -1,25 +1,25 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import BingoGame from '../views/BingoGame.vue'
-import BingoCallout from '../views/BingoCallout.vue';
-import GameOver from '../views/GameOver.vue';
+import Game from '../views/Game.vue'
+import Callout from '../views/Callout.vue';
+import Bingo from '../views/Bingo.vue';
 
 const router = createRouter({
   history: createWebHashHistory('/halloween-bingo/'),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: BingoGame,
+      name: 'game',
+      component: Game,
     },
     {
-      path: '/gameover',
-      name: 'gameover',
-      component: GameOver,
+      path: '/bingo',
+      name: 'bingo',
+      component: Bingo,
     },
     {
       path: '/callout',
       name: 'callout',
-      component: BingoCallout,
+      component: Callout,
     },
   ],
 })
