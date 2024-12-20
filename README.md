@@ -66,6 +66,6 @@ npm install
 npm run dev
 ```
 
-## Copyright
+## Attributions
 
 Pumpkin icon is from <a href="https://www.freepik.com/icons/halloween">Icon by Good Ware</a>
